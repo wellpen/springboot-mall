@@ -1,5 +1,6 @@
 package com.well.springbootmall.dao;
 
+import com.well.springbootmall.dto.ProductRequest;
 import com.well.springbootmall.model.Product;
 import org.springframework.stereotype.Component;
 
@@ -7,5 +8,7 @@ import org.springframework.stereotype.Component;
 public interface ProductDao {
 
     Product getProductById(Integer productId);
+
+    Integer createProduct(ProductRequest productRequest);
 
 }
