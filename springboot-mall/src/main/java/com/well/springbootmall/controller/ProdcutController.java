@@ -1,6 +1,7 @@
 package com.well.springbootmall.controller;
 
 import com.well.springbootmall.constant.ProductCategory;
+import com.well.springbootmall.dto.ProductQueryParams;
 import com.well.springbootmall.dto.ProductRequest;
 import com.well.springbootmall.model.Product;
 import com.well.springbootmall.service.ProductService;
@@ -26,8 +27,12 @@ public class ProdcutController {
           @RequestParam(required = false) String search
 
     ){
+        ProductQueryParams productQueryParams = new ProductQueryParams();
+        productQueryParams.setCategory(category);
+        productQueryParams.setSearch(search);
 
-        List<Product> productList = productService.getProducts(category,search);
+
+        List<Product> productList = productService.getProducts(productQueryParams);
         return ResponseEntity.status(HttpStatus.OK).body(productList);
     }
 
