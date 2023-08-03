@@ -1,5 +1,6 @@
 package com.well.springbootmall.service;
 
+import com.well.springbootmall.constant.ProductCategory;
 import com.well.springbootmall.dto.ProductRequest;
 import com.well.springbootmall.model.Product;
 import org.springframework.stereotype.Component;
@@ -9,7 +10,7 @@ import java.util.List;
 
 public interface ProductService {
 
-    List<Product> getProducts();
+    List<Product> getProducts(ProductCategory category,String search);
     Product getProductById(Integer productId);
     Integer createProduct(ProductRequest productRequest);
     void updateProduct(Integer productId,ProductRequest productRequest);

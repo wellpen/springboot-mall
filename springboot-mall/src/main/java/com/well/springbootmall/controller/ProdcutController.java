@@ -1,5 +1,6 @@
 package com.well.springbootmall.controller;
 
+import com.well.springbootmall.constant.ProductCategory;
 import com.well.springbootmall.dto.ProductRequest;
 import com.well.springbootmall.model.Product;
 import com.well.springbootmall.service.ProductService;
@@ -12,6 +13,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
+
 @RestController
 public class ProdcutController {
 
@@ -19,9 +21,13 @@ public class ProdcutController {
     private ProductService productService;
 
     @GetMapping("/products")
-    public ResponseEntity<List<Product>> getProducts(){
+    public ResponseEntity<List<Product>> getProducts(
+          @RequestParam(required = false) ProductCategory category,
+          @RequestParam(required = false) String search
 
-        List<Product> productList = productService.getProducts();
+    ){
+
+        List<Product> productList = productService.getProducts(category,search);
         return ResponseEntity.status(HttpStatus.OK).body(productList);
     }
 
